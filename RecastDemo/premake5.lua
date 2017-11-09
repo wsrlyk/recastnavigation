@@ -254,3 +254,32 @@ project "Tests"
 			"SDL2.framework",
 			"Cocoa.framework",
 		}
+
+project "DataParser"
+	language "C++"
+	kind "ConsoleApp"
+	includedirs { 
+		"../RecastDemo/Include",
+		"../RecastDemo/Contrib",
+		"../RecastDemo/Contrib/fastlz",
+		"../DebugUtils/Include",
+		"../Detour/Include",
+		"../DetourCrowd/Include",
+		"../DetourTileCache/Include",
+		"../Recast/Include"
+	}
+	files	{ 
+		"../DataParser/Source/*.cpp",
+	}
+
+	-- project dependencies
+	links { 
+		"DebugUtils",
+		"Detour",
+		"DetourCrowd",
+		"DetourTileCache",
+		"Recast"
+	}
+
+	-- distribute executable in RecastDemo/Bin directory
+	targetdir "Bin"
